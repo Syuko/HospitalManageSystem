@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+</head>
+<body>
+<p id="patient">1515</p>
+<script>
+    $(document).ready(function(){
+//用于读取所选表行单元格数据(值)的代码
+
+        $("#myTable").on('click','.btnSelect',function(){
+            var a = $("#patient").text();
+//获得当前行
+
+            var currentRow=$(this).closest("tr");
+
+            var col1=currentRow.find("td:eq(0)").text(); //获得当前行第一个TD值
+
+            var col2=currentRow.find("td:eq(1)").text(); //获得当前行第二个TD值
+
+            var col3=currentRow.find("td:eq(2)").text(); //获得当前行第三个TD值
+
+            var data=col1+"\n"+col2+"\n"+col3+"\n"+a;
+
+            alert(data);
+            window.location.href = "${pageContext.request.contextPath}/NurseWorkServlet?option=showPatientBe";
+
+        });
+
+    });
+</script>
+<table border="1" id="myTable">
+
+    <tr>
+        <td>Tom</td>
+        <td>Bibu</td>
+        <td><button type="button" class="btnSelect">select</button></td>
+    </tr>
+
+    <tr>
+        <td>Hello</td>
+        <td>Test</td>
+
+    </tr>
+
+</table>
+
+
+<form method="get" action="#">
+    <table border="1">
+
+        <tr>
+            <td >Tom</td>
+            <td>Bibu</td>
+            <td><button type="submit">submit</button></td>
+        </tr>
+
+        <tr>
+            <td>Hello</td>
+            <td>Test</td>
+            <td><button type="submit" >submit</button></td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+</html>
